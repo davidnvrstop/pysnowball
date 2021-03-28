@@ -1,10 +1,12 @@
 import requests
 import json
+import pathlib
 
 import pysnowball.cons as cons
 import pysnowball.token as token
+from datetime import date
 
-def fetch(url):
+def fetch(url, method):
     HEADERS = {'Host': 'stock.xueqiu.com',
                'Accept': 'application/json',
                'Cookie': token.get_token(),
@@ -22,6 +24,16 @@ def fetch(url):
 
     if response.status_code != 200:
         raise Exception(response.content)
+
+    if method == cons.JSON_LOADS_MODE:
+      return json.loads(response.content)
+    elif method == cons.JSON_DUMP_MODE:
+      today = date.today()
+      root = pathlib.Path(__file__).parent
+      #jsonfile = root+today.strftime("%y%m%d_%H%M%S") + ".json"
+      jsonfile = "/Users/davidzhao125/Desktop/a.txt"
+      with open(jsonfile,'w') as outfile:
+        json.dump(response.content, outfile)
 
     return json.loads(response.content)
 

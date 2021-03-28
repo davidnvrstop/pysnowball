@@ -10,7 +10,7 @@ def quotec(symbols):
     return utls.fetch_without_token(url)
 
 
-def pankou(symbol):
+def pankou(symbol,method=cons.JSON_DUMP_MODE):
     url = api_ref.realtime_pankou+symbol
-    return utls.fetch(url)
+    return utls.fetch(url,method)
 

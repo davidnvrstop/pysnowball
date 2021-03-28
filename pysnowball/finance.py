@@ -6,7 +6,7 @@ from pysnowball import utls
 
 
 
-def cash_flow(symbol, is_annals=0, count=10):
+def cash_flow(symbol, method=cons.JSON_DUMP_MODE,is_annals=0, count=10):
 
     url = api_ref.finance_cash_flow_url+symbol
     
@@ -15,10 +15,10 @@ def cash_flow(symbol, is_annals=0, count=10):
     
     url = url + '&count='+str(count)
 
-    return utls.fetch(url)
+    return utls.fetch(url,method)
 
 
-def indicator(symbol, is_annals=0, count=10):
+def indicator(symbol,method=cons.JSON_DUMP_MODE, is_annals=0, count=10):
     
     url = api_ref.finance_indicator_url+symbol
     
@@ -27,10 +27,10 @@ def indicator(symbol, is_annals=0, count=10):
     
     url = url + '&count='+str(count)
 
-    return utls.fetch(url)
+    return utls.fetch(url,method)
 
 
-def balance(symbol, is_annals=0, count=10):
+def balance(symbol, method=cons.JSON_DUMP_MODE,is_annals=0, count=10):
 
     url = api_ref.finance_balance_url+symbol
 
@@ -39,10 +39,10 @@ def balance(symbol, is_annals=0, count=10):
 
     url = url + '&count='+str(count)
 
-    return utls.fetch(url)
+    return utls.fetch(url,method)
 
 
-def income(symbol, is_annals=0, count=10):
+def income(symbol,method=cons.JSON_DUMP_MODE, is_annals=0, count=10):
     
     url = api_ref.finance_income_url+symbol
 
@@ -51,10 +51,10 @@ def income(symbol, is_annals=0, count=10):
 
     url = url + '&count='+str(count)
 
-    return utls.fetch(url)
+    return utls.fetch(url,method)
 
 
-def business(symbol, is_annals=0, count=10):
+def business(symbol,method=cons.JSON_DUMP_MODE, is_annals=0, count=10):
 
     url = api_ref.finance_business_url+symbol
 
@@ -63,5 +63,5 @@ def business(symbol, is_annals=0, count=10):
 
     url = url + '&count='+str(count)
 
-    return utls.fetch(url)
+    return utls.fetch(url,method)
  
